@@ -8,6 +8,7 @@
 import edu.duke.*;
 import java.io.*;
 
+
 public class Storage {
     public String collectDNA(){
         FileResource f = new FileResource();
@@ -113,7 +114,10 @@ public class Storage {
         dna = dna.toUpperCase();
         System.out.println(dna);
         System.out.println("dna.length() "+dna.length());
-        StorageResource allGenes = 
+        StorageResource allGenes = storageGenes(dna);
+        for (String s : allGenes.data()){
+            System.out.println(s);
+        }
         //printAllGenes(dna);
     }
 

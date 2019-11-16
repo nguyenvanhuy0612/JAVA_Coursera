@@ -7,6 +7,7 @@
  */
 import edu.duke.*;
 import java.io.*;
+import java.lang.*;
 
 public class Storage {
     public String collectDNA(){
@@ -114,7 +115,9 @@ public class Storage {
         System.out.println(dna);
         System.out.println("dna.length() "+dna.length());
         StorageResource allGenes = storageGenes(dna);
-        
+        for (String s : allGenes.data()){
+            System.out.println(s);
+        }
         //printAllGenes(dna);
     }
 
