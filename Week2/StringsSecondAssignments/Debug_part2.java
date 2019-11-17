@@ -5,6 +5,8 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
+import java.io.*;
+
 public class Debug_part2 {
     public void findAbc(String input){
         int index = input.indexOf("abc");
@@ -26,4 +28,11 @@ public class Debug_part2 {
         findAbc("abcabcabcabca");
     }
 
+    public void whenWriteStringUsingBufferedWritter_thenCorrect() 
+    throws IOException {
+        String str = "Hello";
+        BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\testout.txt"));
+        writer.write(str);
+        writer.close();
+    }
 }

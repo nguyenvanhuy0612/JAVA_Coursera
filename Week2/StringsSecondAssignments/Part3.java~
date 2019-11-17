@@ -9,6 +9,7 @@ import edu.duke.*;
 import java.io.*;
 
 public class Part3 {
+    int currStopCodonIndex = 0;
     public String collectDNA(){
         FileResource f = new FileResource();
         String dna = "";
@@ -44,9 +45,9 @@ public class Part3 {
             return "";
         }
 
-        int taaIndex = findStopIndex(dna, startIndex, "TAA");   System.out.println("taaIndex "+taaIndex);
-        int tagIndex = findStopIndex(dna, startIndex, "TAG");   System.out.println("tagIndex "+tagIndex);
-        int tgaIndex = findStopIndex(dna, startIndex, "TGA");   System.out.println("tgaIndex "+tgaIndex);
+        int taaIndex = findStopIndex(dna, startIndex, "TAA");   //System.out.println("taaIndex "+taaIndex);
+        int tagIndex = findStopIndex(dna, startIndex, "TAG");   //System.out.println("tagIndex "+tagIndex);
+        int tgaIndex = findStopIndex(dna, startIndex, "TGA");   //System.out.println("tgaIndex "+tgaIndex);
 
         int minIndex = Math.min(taaIndex, tagIndex);
         minIndex = Math.min(minIndex, tgaIndex);                System.out.println("minIndex "+minIndex);
@@ -54,7 +55,9 @@ public class Part3 {
         if (minIndex == dna.length()){
             return "";
         }
-
+        currStopCodonIndex = minIndex + 3;
+        
+        //System.out.println("currStopCodonIndex = minIndex + 3; "+currStopCodonIndex);
         return dna.substring(startIndex, minIndex + 3);
     }
 
@@ -65,7 +68,7 @@ public class Part3 {
         System.out.println("dna.length() "+dna.length());
         System.out.println(findGene(dna, 0));
     }
-    
+
     public void printAllGenes(String dna){
         int startIndex = dna.indexOf("ATG");
         while (startIndex != -1){
@@ -74,10 +77,13 @@ public class Part3 {
                 break;
             }
             System.out.println("currGene "+currGene);
-            startIndex = dna.indexOf(currGene, startIndex) + currGene.length();
+            //startIndex = dna.indexOf(currGene, startIndex) + currGene.length();
+            startIndex = currStopCodonIndex;
+            //System.out.println("startIndex "+startIndex);
+            //System.out.println("currStopCodonIndex "+currStopCodonIndex);
         }
     }
-    
+
     public int countGenes(String dna){
         int startIndex = dna.indexOf("ATG");
         int totalGenes = 0;
@@ -92,7 +98,7 @@ public class Part3 {
         }
         return totalGenes;
     }
-    
+
     public void testPrintAllGenes(){
         String dna = collectDNA();
         dna = dna.toUpperCase();
@@ -100,7 +106,7 @@ public class Part3 {
         System.out.println("dna.length() "+dna.length());
         printAllGenes(dna);
     }
-    
+
     public void testCountGenes(){
         System.out.println("number of Gene in DNA "+countGenes("ATGTAAGATGCCCTAGT"));
     }
