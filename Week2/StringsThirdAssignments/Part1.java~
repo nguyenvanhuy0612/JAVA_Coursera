@@ -96,6 +96,9 @@ public class Part1 {
             //System.out.println("startIndex = x: "+startIndex);
 =======
             startIndex = dna.indexOf(currGene, startIndex) + currGene.length();
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         }
         return sr;
