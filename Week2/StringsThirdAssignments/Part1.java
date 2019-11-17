@@ -51,12 +51,12 @@ public class Part1 {
         int tgaIndex = findStopIndex(dna, startIndex, "TGA");   //System.out.println("tgaIndex "+tgaIndex);
 
         int minIndex = Math.min(taaIndex, tagIndex);
-        minIndex = Math.min(minIndex, tgaIndex);                System.out.println("minIndex "+minIndex);
+        minIndex = Math.min(minIndex, tgaIndex);               //System.out.println("minIndex "+minIndex);
 
         if (minIndex == dna.length()){
             return "";
         }
-        x = minIndex;
+        //x = minIndex + 3;
         return dna.substring(startIndex, minIndex + 3);
     }
 
@@ -89,10 +89,10 @@ public class Part1 {
                 break;
             }
             sr.add(currGene);
-            //startIndex = dna.indexOf(currGene, startIndex) + currGene.length();
-            System.out.println("startIndex: "+dna.indexOf(currGene, startIndex) + currGene.length());
-            startIndex = x + 3;
-            System.out.println("startIndex = x + 3: "+startIndex);
+            startIndex = dna.indexOf(currGene, startIndex) + currGene.length();
+            //System.out.println("startIndex: "+dna.indexOf(currGene, startIndex) + currGene.length());
+            //startIndex = x;
+            //System.out.println("startIndex = x: "+startIndex);
         }
         return sr;
     }
