@@ -89,10 +89,14 @@ public class Part1 {
                 break;
             }
             sr.add(currGene);
+<<<<<<< Updated upstream
             //startIndex = dna.indexOf(currGene, startIndex) + currGene.length();
             //System.out.println("startIndex: "+dna.indexOf(currGene, startIndex) + currGene.length());
             //startIndex = x;
             //System.out.println("startIndex = x: "+startIndex);
+=======
+            startIndex = dna.indexOf(currGene, startIndex) + currGene.length();
+>>>>>>> Stashed changes
         }
         return sr;
     }

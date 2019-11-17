@@ -9,8 +9,12 @@ import java.io.*;
 import edu.duke.*;
 
 public class Part1 {
+<<<<<<< Updated upstream
     int x = 0;
     
+=======
+
+>>>>>>> Stashed changes
     public String collectDNA(){
         FileResource f = new FileResource();
         String dna = "";
@@ -67,7 +71,7 @@ public class Part1 {
         System.out.println("dna.length() "+dna.length());
         System.out.println(findGene(dna, 0));
     }
-    
+
     public void printAllGenes(String dna){
         int startIndex = dna.indexOf("ATG");
         while (startIndex != -1){
@@ -79,7 +83,7 @@ public class Part1 {
             startIndex = dna.indexOf(currGene, startIndex) + currGene.length();
         }
     }
-    
+
     public StorageResource getAllGenes(String dna){
         StorageResource sr = new StorageResource();
         int startIndex = dna.indexOf("ATG");
@@ -96,7 +100,7 @@ public class Part1 {
         }
         return sr;
     }
-    
+
     public void testPrintAllGenes(){
         String dna = collectDNA();
         dna = dna.toUpperCase();
@@ -104,7 +108,7 @@ public class Part1 {
         System.out.println("dna.length() "+dna.length());
         printAllGenes(dna);
     }
-    
+
     public void testGetAllGenes(){
         String dna = collectDNA();
         dna = dna.toUpperCase();
@@ -116,10 +120,6 @@ public class Part1 {
         }   
     }
 }
-
-
-
-
 
 
 
