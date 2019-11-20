@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Part2
+comment0.text=\r\n\ \ \ \ public\ int\ countChar(String\ dna,\ char\ cr)\ {\r\n\ \ \ \ \ \ \ \ int\ count\ \=\ 0;\r\n\ \ \ \ \ \ \ \ for\ (int\ i\ \=\ 0;\ i\ <\ dna.length();\ i++){\r\n\ \ \ \ \ \ \ \ \ \ \ \ if\ (dna.charAt(i)\ \=\=\ cr){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count++;\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ return\ count;\r\n\ \ \ \ }\r\n\r\n\ \ \ \ public\ double\ cgRatio(String\ dna)\ {\r\n\ \ \ \ \ \ \ \ int\ cNum\ \=\ countChar(dna,'C');\r\n\ \ \ \ \ \ \ \ int\ gNum\ \=\ countChar(dna,'G');\r\n\ \ \ \ \ \ \ \ double\ Ratio\ \=\ (double)\ cNum/gNum;\r\n\ \ \ \ \ \ \ \ return\ Ratio;\r\n\ \ \ \ }\r\n\ \ \ \ \r\n\ \ \ \ public\ void\ testcgRatio(\r\n\ \ \ \ \r\n
+comment1.params=dna
+comment1.target=double\ cgRatio(java.lang.String)
+numComments=2

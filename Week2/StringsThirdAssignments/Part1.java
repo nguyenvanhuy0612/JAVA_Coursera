@@ -56,11 +56,11 @@ public class Part1 {
         // }
         int minIndex = 0;
         
-        if (taaIndex == -1 || (tagIndex != -1) && (tagIndex < taaIndex)){
+        if (taaIndex == -1 || ((tagIndex != -1) && (tagIndex < taaIndex))){
             minIndex = tagIndex;
         }else{ minIndex = tagIndex; }
         
-        if (minIndex == -1 || (tgaIndex != -1) && (tgaIndex < minIndex)){
+        if (minIndex == -1 || ((tgaIndex != -1) && (tgaIndex < minIndex))){
             minIndex = tgaIndex;
         }
         
