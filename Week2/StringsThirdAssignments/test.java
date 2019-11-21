@@ -40,12 +40,12 @@ public class test {
             if (cIndex*gIndex < 0){
                 currIndex = -1*cIndex*gIndex;
                 countcg++;
-                cIndex = dna.indexOf("C",currIndex+1);
-                gIndex = dna.indexOf("G",currIndex+1);
+                cIndex = dna.indexOf("C", currIndex+1);
+                gIndex = dna.indexOf("G", currIndex+1);
             }else{
                 countcg += 2;
-                cIndex = dna.indexOf("C",cIndex+1);
-                gIndex = dna.indexOf("G",gIndex+1);
+                cIndex = dna.indexOf("C", cIndex+1);
+                gIndex = dna.indexOf("G", gIndex+1);
             }
             
         }
