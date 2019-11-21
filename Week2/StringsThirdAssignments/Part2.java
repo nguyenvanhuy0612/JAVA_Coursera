@@ -42,7 +42,7 @@ public class Part2 {
         int gIndex = countIndex(dna, "G");
         //System.out.println("cIndex "+cIndex);
         //System.out.println("gIndex "+gIndex);
-        return (double) cIndex/gIndex;
+        return (double) (cIndex + gIndex)/ dna.length();
     }
 
     public void testcgRatio(){
