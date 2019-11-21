@@ -34,15 +34,14 @@ public class Part2 {
             count++;
             currIndex = dna.indexOf(input, currIndex + input.length());
         }
-
         return count;
     }
 
     public double cgRatio(String dna){
         int cIndex = countIndex(dna, "C");
         int gIndex = countIndex(dna, "G");
-        System.out.println("cIndex "+cIndex);
-        System.out.println("gIndex "+gIndex);
+        //System.out.println("cIndex "+cIndex);
+        //System.out.println("gIndex "+gIndex);
         return (double) cIndex/gIndex;
     }
 

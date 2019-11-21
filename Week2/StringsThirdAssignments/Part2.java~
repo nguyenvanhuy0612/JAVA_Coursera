@@ -34,15 +34,15 @@ public class Part2 {
             count++;
             currIndex = dna.indexOf(input, currIndex + input.length());
         }
-
         return count;
     }
 
     public double cgRatio(String dna){
         int cIndex = countIndex(dna, "C");
         int gIndex = countIndex(dna, "G");
-        System.out.println("cIndex "+cIndex);
-        System.out.println("gIndex "+gIndex);
+        if (gIndex
+        //System.out.println("cIndex "+cIndex);
+        //System.out.println("gIndex "+gIndex);
         return (double) cIndex/gIndex;
     }
 
@@ -57,7 +57,7 @@ public class Part2 {
     }
     
     public void testcountCTG(){
-        String dna = "CTGATGCCTGCTGCATACTGGCTG";
+        String dna = "CTGATGCCTGCTGCATACTGGCTCTG";
         System.out.println("dna "+dna);
         System.out.println("countCTG "+countCTG(dna));
     }
