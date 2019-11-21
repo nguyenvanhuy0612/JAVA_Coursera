@@ -27,7 +27,7 @@
     
     public void testcgRatio(
     
-    */
+    
    
 public class Part2 {
     
@@ -36,8 +36,7 @@ public class Part2 {
        int gIndex = dna.indexOf("G");
        int countC = 0;
        while (true){
-           
-           
+           if (
            countC++;
            cIndex = dna.indexOf("C",cIndex+1);
            break;

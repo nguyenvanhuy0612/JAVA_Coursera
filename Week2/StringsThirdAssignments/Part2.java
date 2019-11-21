@@ -7,7 +7,7 @@
  */
 
 
-    /*
+    
     public int countChar(String dna, char cr) {
         int count = 0;
         for (int i = 0; i < dna.length(); i++){
@@ -27,7 +27,7 @@
     
     public void testcgRatio(
     
-    */
+    
    
 public class Part2 {
     
@@ -37,7 +37,6 @@ public class Part2 {
        int countC = 0;
        while (true){
            if (
-           
            countC++;
            cIndex = dna.indexOf("C",cIndex+1);
            break;
