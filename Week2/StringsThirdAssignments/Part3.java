@@ -35,12 +35,15 @@ public class Part3 {
         }
 
         // print all the Strings in sr that are longer than 9 characters
+        System.out.println("==============================================");
         for (String gene : geneSizeLarge9.data()){
             System.out.println("geneSizeLarge9 "+gene);
         }
 
         // print the number of Strings in sr that are longer than 9 characters
+        System.out.println("==============================================");
         System.out.println("numStringLonger9 "+geneSizeLarge9.size());
+        System.out.println("==============================================");
 
         // print the Strings in sr whose C-G-ratio is higher than 0.35
         for (String gene : geneRatioHigher035.data()){
@@ -48,10 +51,13 @@ public class Part3 {
         }
 
         // print the number of strings in sr whose C-G-ratio is higher than 0.35
+        System.out.println("==============================================");
         System.out.println("numStringcgRatio035 "+geneRatioHigher035.size());
+        System.out.println("==============================================");
 
         // print the length of the longest gene in sr
         System.out.println("longestGene "+longestGene);
+        System.out.println("==============================================");
 
     }
 
