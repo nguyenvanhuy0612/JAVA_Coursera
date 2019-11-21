@@ -33,10 +33,8 @@ public class Part1 {
     }
 
     public void testFindStopCodon(){
-
         String dna = "ATGCGTGATTAA";
         System.out.println("findStopIndex "+findStopIndex(dna, 0, "TAA"));
-
     }
 
     public String findGene(String dna, int beginIndex){
@@ -47,27 +45,22 @@ public class Part1 {
         int taaIndex = findStopIndex(dna, startIndex, "TAA");   //System.out.println("taaIndex "+taaIndex);
         int tagIndex = findStopIndex(dna, startIndex, "TAG");   //System.out.println("tagIndex "+tagIndex);
         int tgaIndex = findStopIndex(dna, startIndex, "TGA");   //System.out.println("tgaIndex "+tgaIndex);
-
         // int minIndex = Math.min(taaIndex, tagIndex);
         // minIndex = Math.min(minIndex, tgaIndex);               //System.out.println("minIndex "+minIndex);
 
         // if (minIndex == dna.length()){
-            // return "";
+        // return "";
         // }
         int minIndex = 0;
-        
         if (taaIndex == -1 || ((tagIndex != -1) && (tagIndex < taaIndex))){
             minIndex = tagIndex;
         }else{ minIndex = tagIndex; }
-        
-        if (minIndex == -1 || ((tgaIndex != -1) && (tgaIndex < minIndex)){
+        if (minIndex == -1 || ((tgaIndex != -1) && (tgaIndex < minIndex))){
             minIndex = tgaIndex;
         }
-        
         if (minIndex == -1){
             return "";
         }
-        
         return dna.substring(startIndex, minIndex + 3);
     }
 
@@ -121,9 +114,9 @@ public class Part1 {
         StorageResource allGenes = getAllGenes(dna);
         for (String s : allGenes.data()){
             System.out.println(s);
-        }   
+        }
+        
     }
 }
-
 
 
