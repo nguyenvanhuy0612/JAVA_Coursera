@@ -45,7 +45,7 @@ public class test {
             }else{
                 countcg += 2;
                 cIndex = dna.indexOf("C", cIndex+1);
-                gIndex = dna.indexOf("G",gIndex+1);
+                gIndex = dna.indexOf("G", gIndex+1);
             }
             
         }

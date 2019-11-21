@@ -37,6 +37,7 @@ public class test {
             if (cIndex*gIndex == 1){
                 break;
             }
+            if 
             if (cIndex*gIndex < 0){
                 currIndex = -1*cIndex*gIndex;
                 countcg++;
