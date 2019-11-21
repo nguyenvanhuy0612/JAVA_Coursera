@@ -60,12 +60,13 @@ public class Part3 {
         System.out.println("==============================================");
 
     }
-
+    
     public void testProcessGenes(){
         String dna = p1.collectDNA();
         dna = dna.toUpperCase();
         System.out.println(dna);
         System.out.println("dna.length() "+dna.length());
+        System.out.println("==============================================");
         processGenes(p1.getAllGenes(dna));
     }
 }
