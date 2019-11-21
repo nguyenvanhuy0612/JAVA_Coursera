@@ -14,7 +14,7 @@ public class Part4 {
         String result = "";
         for (String s : ur.words()){
             String sLower = s.toLowerCase();
-            System.out.println(sLower);
+            //System.out.println(sLower);
             int pos1 = sLower.indexOf("youtube.com");
             if ( pos1 != -1){
                 int begin = sLower.indexOf("\"") + 1;

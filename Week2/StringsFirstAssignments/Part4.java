@@ -10,7 +10,7 @@ import java.io.*;
 
 public class Part4 {
     public void getURL(){
-        URLResource ur = new URLResource("https://www.facebook.com/pg/Dota2QuotesVN/posts/?ref=notif");
+        URLResource ur = new URLResource("http://www.dukelearntoprogram.com/course2/data/manylinks.html");
         String result = "";
         for (String s : ur.words()){
             String sLower = s.toLowerCase();

@@ -26,4 +26,29 @@ public class test {
         }
         System.out.println("minIndex lan 2 "+minIndex);
     }
+    
+    public double cgRatio(String dna){
+        int cIndex = dna.indexOf("C");
+        int gIndex = dna.indexOf("G");
+        int countcg = 0, currIndex = 0;
+        //System.out.println("cIndex "+cIndex);
+        //System.out.println("gIndex "+gIndex);
+        while (true){
+            if (cIndex*gIndex == 1){
+                break;
+            }
+            if (cIndex*gIndex < 0){
+                currIndex = -1*cIndex*gIndex;
+                countcg++;
+                cIndex = dna.indexOf("C",currIndex+1);
+                gIndex = dna.indexOf("G",currIndex+1);
+            }else{
+                countcg += 2;
+                cIndex = dna.indexOf("C",cIndex+1);
+                gIndex = dna.indexOf("G",gIndex+1);
+            }
+            
+        }
+        return (double) countcg/ dna.length();
+    }
 }
