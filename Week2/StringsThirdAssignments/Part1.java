@@ -37,30 +37,29 @@ public class Part1 {
         System.out.println("findStopIndex "+findStopIndex(dna, 0, "TAA"));
     }
 
+    public int findPositiveInterger(int num1, int num2) {
+        if (num1*num2 == 1){
+            return -1;
+        }
+        if (num1*num2 < 0){
+            return -1*num1*num2;
+        }
+        return Math.min(num1,num2);
+    }
+
     public String findGene(String dna, int beginIndex){
         int startIndex = dna.indexOf("ATG", beginIndex);
-        if (startIndex == -1){
-            return "";
-        }
-        int taaIndex = findStopIndex(dna, startIndex, "TAA");   //System.out.println("taaIndex "+taaIndex);
-        int tagIndex = findStopIndex(dna, startIndex, "TAG");   //System.out.println("tagIndex "+tagIndex);
-        int tgaIndex = findStopIndex(dna, startIndex, "TGA");   //System.out.println("tgaIndex "+tgaIndex);
-        // int minIndex = Math.min(taaIndex, tagIndex);
-        // minIndex = Math.min(minIndex, tgaIndex);               //System.out.println("minIndex "+minIndex);
+        if (startIndex == -1){return ""; }
 
-        // if (minIndex == dna.length()){
-        // return "";
-        // }
-        int minIndex = 0;
-        if (taaIndex == -1 || ((tagIndex != -1) && (tagIndex < taaIndex))){
-            minIndex = tagIndex;
-        }else{ minIndex = tagIndex; }
-        if (minIndex == -1 || ((tgaIndex != -1) && (tgaIndex < minIndex))){
-            minIndex = tgaIndex;
-        }
-        if (minIndex == -1){
-            return "";
-        }
+        int taaIndex = findStopIndex(dna, startIndex, "TAA");
+        int tagIndex = findStopIndex(dna, startIndex, "TAG");
+        int tgaIndex = findStopIndex(dna, startIndex, "TGA");
+
+        int minIndex = findPositiveInterger(taaIndex, tagIndex);
+        minIndex = findPositiveInterger(minIndex, tgaIndex);
+
+        if (minIndex == -1){ return ""; }
+
         return dna.substring(startIndex, minIndex + 3);
     }
 
@@ -73,27 +72,27 @@ public class Part1 {
     }
 
     public void printAllGenes(String dna){
-        int startIndex = dna.indexOf("ATG");
-        while (startIndex != -1){
-            String currGene = findGene(dna, startIndex);
+        int beginGene = dna.indexOf("ATG");
+        while (true){
+            String currGene = findGene(dna, beginGene);
             if (currGene.isEmpty()){
                 break;
             }
             System.out.println("currGene "+currGene);
-            startIndex = dna.indexOf(currGene, startIndex) + currGene.length();
+            beginGene = dna.indexOf(currGene, beginGene) + currGene.length();
         }
     }
 
     public StorageResource getAllGenes(String dna){
         StorageResource sr = new StorageResource();
-        int startIndex = dna.indexOf("ATG");
-        while (startIndex != -1){
-            String currGene = findGene(dna, startIndex);
+        int beginGene = dna.indexOf("ATG");
+        while (true){
+            String currGene = findGene(dna, beginGene);
             if (currGene.isEmpty()){
                 break;
             }
             sr.add(currGene);
-            startIndex = dna.indexOf(currGene, startIndex) + currGene.length();
+            beginGene = dna.indexOf(currGene, beginGene) + currGene.length();
         }
         return sr;
     }
@@ -118,5 +117,4 @@ public class Part1 {
         System.out.println("Number of Gene "+allGenes.size());
     }
 }
-
 

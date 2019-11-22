@@ -6,25 +6,25 @@
  * @version (a version number or a date)
  */
 public class test {
+    Part1 p1 = new Part1();
 
-    public void test1(int taaIndex, int tagIndex, int tgaIndex){
-        //int taaIndex = 0;   
-        System.out.println("taaIndex "+taaIndex);
-        //int tagIndex = 0;   
-        System.out.println("tagIndex "+tagIndex);
-        //int tgaIndex = 0;   
-        System.out.println("tgaIndex "+tgaIndex);
-        int minIndex = 0;   
-        System.out.println("minIndex "+minIndex);
-
-        if (taaIndex == -1 || ((tagIndex != -1) && (tagIndex < taaIndex))){
-            minIndex = tagIndex;
-        }else{ minIndex = tagIndex; }
-        System.out.println("minIndex lan 1 "+minIndex);
-        if (minIndex == -1 || ((tgaIndex != -1) && (tgaIndex < minIndex))){
-            minIndex = tgaIndex;
+    public String findGene(String dna, int beginIndex){
+        int startIndex = dna.indexOf("ATG", beginIndex);
+        if (startIndex == -1){
+            return "";
         }
-        System.out.println("minIndex lan 2 "+minIndex);
+        int taaIndex = p1.findStopIndex(dna, startIndex, "TAA");
+        int tagIndex = p1.findStopIndex(dna, startIndex, "TAG"); 
+        int tgaIndex = p1.findStopIndex(dna, startIndex, "TGA");
+        int minIndex = 0;
+        
+        if (taaIndex*tagIndex == 1){ minIndex = -1;}
+        else if (taaIndex*tagIndex == -1){ minIndex = -1*taaIndex*tagIndex;}
+        else{ minIndex = Math.min(taaIndex,tagIndex);}
+        
+        
+        
+        return dna.substring(startIndex, minIndex + 3);
     }
 
     public double cgRatio(String dna){
