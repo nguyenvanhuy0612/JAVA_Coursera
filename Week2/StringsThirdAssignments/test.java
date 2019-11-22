@@ -37,8 +37,8 @@ public class test {
             if (cIndex*gIndex == 1){
                 break;
             }
-            if 
-            if (cIndex*gIndex < 0){
+            
+            if (Math.min(cIndex, gIndex) == -1 ){
                 currIndex = -1*cIndex*gIndex;
                 countcg++;
                 cIndex = dna.indexOf("C", currIndex+1);
