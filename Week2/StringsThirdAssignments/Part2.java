@@ -6,26 +6,6 @@
  * @version (a version number or a date)
  */
 
-/*
-public int countChar(String dna, char cr) {
-int count = 0;
-for (int i = 0; i < dna.length(); i++){
-if (dna.charAt(i) == cr){
-count++;
-}
-}
-return count;
-}
-
-public double cgRatio(String dna) {
-int cNum = countChar(dna,'C');
-int gNum = countChar(dna,'G');
-double Ratio = (double) cNum/gNum;
-return Ratio;
-}
-
- */
-
 public class Part2 {
     public int countIndex(String dna, String input){
         int currIndex = dna.indexOf(input);

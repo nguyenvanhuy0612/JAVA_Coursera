@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Part2
-comment0.text=\r\npublic\ int\ countChar(String\ dna,\ char\ cr)\ {\r\nint\ count\ \=\ 0;\r\nfor\ (int\ i\ \=\ 0;\ i\ <\ dna.length();\ i++){\r\nif\ (dna.charAt(i)\ \=\=\ cr){\r\ncount++;\r\n}\r\n}\r\nreturn\ count;\r\n}\r\n\r\npublic\ double\ cgRatio(String\ dna)\ {\r\nint\ cNum\ \=\ countChar(dna,'C');\r\nint\ gNum\ \=\ countChar(dna,'G');\r\ndouble\ Ratio\ \=\ (double)\ cNum/gNum;\r\nreturn\ Ratio;\r\n}\r\n\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ Part2\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=dna\ input
 comment1.target=int\ countIndex(java.lang.String,\ java.lang.String)
 comment2.params=dna
