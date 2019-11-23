@@ -11,11 +11,10 @@ import edu.duke.*;
 public class Part1 {
     public String collectDNA(){
         FileResource f = new FileResource();
-        String dna = "";
-        for (String s : f.words()){
-            dna += s;
-        }
-        //System.out.println("dna "+dna);
+        String dna = f.asString();
+        //for (String s : f.words()){
+            //dna += s;
+        //}
         return dna;
     }
 

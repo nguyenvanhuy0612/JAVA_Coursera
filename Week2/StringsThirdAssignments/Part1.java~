@@ -11,9 +11,9 @@ import edu.duke.*;
 public class Part1 {
     public String collectDNA(){
         FileResource f = new FileResource();
-        String dna = "";
+        String dna = f.asString();
         for (String s : f.words()){
-            dna += s;
+            //dna += s;
         }
         //System.out.println("dna "+dna);
         return dna;
@@ -72,27 +72,27 @@ public class Part1 {
     }
 
     public void printAllGenes(String dna){
-        int startIndex = dna.indexOf("ATG");
-        while (startIndex != -1){
-            String currGene = findGene(dna, startIndex);
+        int beginGene = dna.indexOf("ATG");
+        while (true){
+            String currGene = findGene(dna, beginGene);
             if (currGene.isEmpty()){
                 break;
             }
             System.out.println("currGene "+currGene);
-            startIndex = dna.indexOf(currGene, startIndex) + currGene.length();
+            beginGene = dna.indexOf(currGene, beginGene) + currGene.length();
         }
     }
 
     public StorageResource getAllGenes(String dna){
         StorageResource sr = new StorageResource();
-        int startIndex = dna.indexOf("ATG");
-        while (startIndex != -1){
-            String currGene = findGene(dna, startIndex);
+        int beginGene = dna.indexOf("ATG");
+        while (true){
+            String currGene = findGene(dna, beginGene);
             if (currGene.isEmpty()){
                 break;
             }
             sr.add(currGene);
-            startIndex = dna.indexOf(currGene, startIndex) + currGene.length();
+            beginGene = dna.indexOf(currGene, beginGene) + currGene.length();
         }
         return sr;
     }
