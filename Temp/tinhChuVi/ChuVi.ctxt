@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ChuVi
+comment1.params=hinh
+comment1.target=double\ TinhChuVi(edu.duke.Shape)
+comment2.params=
+comment2.target=double\ NhapHinh()
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4
