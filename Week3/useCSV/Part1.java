@@ -16,23 +16,23 @@ public class Part1 {
     }
 
     public String countryInfo(CSVParser parser, String country) {
-        String countryName = "";
+        String countryName = "NOT FOUND";
         for (CSVRecord record : parser){
             String currCountry = record.get("Country");
             if (currCountry.contains(country)){
-                countryName = countryName + record.get("Country") + ": "+record.get("Exports")+ ": "+record.get("Value (dollars)");
+                countryName = record.get("Country") + ": "+record.get("Exports")+ ": "+record.get("Value (dollars)");
+                return countryName;
             }
-        }
-        if (countryName.isEmpty()){
-            return "NOT FOUND";
         }
         return countryName;
     }
-    
+
     public void testCountryInfo() {
-        CSVParser ps = tester();
-        System.out.println(countryInfo(ps, "Germany"));
-        System.out.println(countryInfo(ps, "Malaysia"));
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        
+        System.out.println(countryInfo(parser, "Malaysia"));
+        System.out.println(countryInfo(parser, "Germany"));
     }
 
 }
