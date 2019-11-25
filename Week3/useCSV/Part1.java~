@@ -32,7 +32,17 @@ public class Part1 {
     public void testCountryInfo() {
         CSVParser ps = tester();
         System.out.println(countryInfo(ps, "Germany"));
-        System.out.println(countryInfo(parser, "Malaysia"));
+        System.out.println(countryInfo(ps, "Malaysia"));
     }
+
+}
+
+/**
+ * Write a description of Part1 here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Part1 {
 
 }
