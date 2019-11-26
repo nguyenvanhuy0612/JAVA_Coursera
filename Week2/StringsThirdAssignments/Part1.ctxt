@@ -2,10 +2,12 @@
 comment0.target=Part1
 comment1.params=
 comment1.target=java.lang.String\ collectDNA()
+comment1.text=\r\n\ -\ ph\u01B0\u01A1ng\ th\u1EE9c\ collectDNA\ s\u1EBD\ l\u1EA5y\ chu\u1ED7i\ dna\ t\u1EEB\ file\ b\u1EA5t\ k\u00EC\ v\u00E0\ tr\u1EA3\ v\u1EC1\ m\u1ED9t\ gi\u00E1\ tr\u1ECB\ String.\r\n\ \r\n\ \r\n\ -tr\u1EA3\ v\u1EC1\ String\r\n
 comment10.params=
 comment10.target=void\ testGetAllGenes()
 comment2.params=dna\ startIndex\ stopCodon
 comment2.target=int\ findStopIndex(java.lang.String,\ int,\ java.lang.String)
+comment2.text=\r\n\ -\ findStopIndex\:\ t\u00ECm\ t\u1EEB\ chu\u1ED7i\ dna,\ b\u1EAFt\ \u0111\u1EA7u\ t\u1EEB\ v\u1ECB\ tr\u00ED\ startIndex,\ v\u1EDBi\ gi\u00E1\ tr\u1ECB\ c\u1EA7n\ t\u00ECm\r\n\ l\u00E0\ stopCodon\r\n\ \r\n\ -\ tr\u1EA3\ v\u1EC1\ int\r\n
 comment3.params=
 comment3.target=void\ testFindStopCodon()
 comment4.params=num1\ num2

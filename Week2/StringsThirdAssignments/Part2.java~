@@ -6,7 +6,6 @@
  * @version (a version number or a date)
  */
 
-
 public class Part2 {
     public int countIndex(String dna, String input){
         int currIndex = dna.indexOf(input);
