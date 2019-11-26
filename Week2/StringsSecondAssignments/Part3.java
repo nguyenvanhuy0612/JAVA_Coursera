@@ -12,10 +12,10 @@ public class Part3 {
     int currStopCodonIndex = 0;
     public String collectDNA(){
         FileResource f = new FileResource();
-        String dna = "";
-        for (String s : f.words()){
-            dna += s;
-        }
+        String dna = f.asString();
+        // for (String s : f.words()){
+            // dna += s;
+        // }
         //System.out.println("dna "+dna);
         return dna;
     }

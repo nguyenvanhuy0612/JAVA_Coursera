@@ -12,25 +12,33 @@ public class Part1 {
     public void tester() {
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
-
+        
         //System.out.println(countryInfo(parser, "Malaysia"));
-
         //parser = fr.getCSVParser();
         //System.out.println(countryInfo(parser, "Germany"));
 
         //parser = fr.getCSVParser();
+        //System.out.println(countryInfo(parser, "Nauru"));
+
+        //parser = fr.getCSVParser();
         //listExportersTwoProducts(parser, "gold", "diamonds");
+        //listExportersTwoProducts(parser, "fish", "nuts");
 
         //parser = fr.getCSVParser();
         //System.out.println("numberOfExporters: " + numberOfExporters(parser, "gold"));
+        //System.out.println("numberOfExporters: " + numberOfExporters(parser, "gold"));
 
-        parser = fr.getCSVParser();
-        bigExporters(parser, "$99g9,999,999");
+        //parser = fr.getCSVParser();
+        bigExporters(parser, "$999,99jk9,999,999");
+
+        //parser = fr.getCSVParser();
+        //bigExporters1(parser, "$999,999,999,999");
     }
 
     public String countryInfo(CSVParser parser, String country) {
         String countryName = "NOT FOUND";
         for (CSVRecord record : parser){
+            System.out.println(record);
             String currCountry = record.get("Country");
             if (currCountry.contains(country)){
                 countryName = record.get("Country") + ": "+record.get("Exports")+ ": "+record.get("Value (dollars)");
@@ -61,13 +69,15 @@ public class Part1 {
     public double convertToDouble(String input){
         String currString = input.replace("$", "");
         currString = currString.replace(",", "");
-        //double stringToNumber = Double.parseDouble(currString);
+
         // try {
-            // Double.parseDouble(currString);
+        // Double.parseDouble(currString);
         // }   catch (Exception e){
-            // System.out.println("wrong value dolla format");
-            // return 1;
+        // System.out.println("wrong value dolla format");
+        
+        // return 1;
         // }
+
         double stringToNumber = Double.parseDouble(currString);
         return stringToNumber;
     }
@@ -78,7 +88,15 @@ public class Part1 {
             String valueItem = record.get("Value (dollars)");
             double valueNum = convertToDouble(valueItem);
             if (valueNum > amountNum){
-                System.out.println(record.get("Country")+": "+valueItem);
+                System.out.println(record.get("Country")+" "+valueItem);
+            }
+        }
+    }
+
+    public void bigExporters1(CSVParser parser, String amount){
+        for (CSVRecord record : parser){
+            if (record.get("Value (dollars)").length() > amount.length()){
+                System.out.println(record.get("Country")+" "+record.get("Value (dollars)"));
             }
         }
     }

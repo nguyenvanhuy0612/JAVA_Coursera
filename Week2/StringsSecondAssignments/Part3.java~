@@ -12,10 +12,10 @@ public class Part3 {
     int currStopCodonIndex = 0;
     public String collectDNA(){
         FileResource f = new FileResource();
-        String dna = "";
-        for (String s : f.words()){
-            dna += s;
-        }
+        String dna = f.asString();
+        // for (String s : f.words()){
+            // dna += s;
+        // }
         //System.out.println("dna "+dna);
         return dna;
     }
@@ -38,6 +38,7 @@ public class Part3 {
         System.out.println("findStopIndex "+findStopIndex(dna, 0, "TAA"));
 
     }
+    
 
     public String findGene(String dna, int beginIndex){
         int startIndex = dna.indexOf("ATG", beginIndex);
@@ -50,7 +51,7 @@ public class Part3 {
         int tgaIndex = findStopIndex(dna, startIndex, "TGA");   //System.out.println("tgaIndex "+tgaIndex);
 
         int minIndex = Math.min(taaIndex, tagIndex);
-        minIndex = Math.min(minIndex, tgaIndex);                System.out.println("minIndex "+minIndex);
+        minIndex = Math.min(minIndex, tgaIndex);                //System.out.println("minIndex "+minIndex);
 
         if (minIndex == dna.length()){
             return "";
