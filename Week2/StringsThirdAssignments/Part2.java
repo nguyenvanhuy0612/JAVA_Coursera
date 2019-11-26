@@ -7,6 +7,7 @@
  */
 
 public class Part2 {
+    
     public int countIndex(String dna, String input){
         int currIndex = dna.indexOf(input);
         int count = 0;

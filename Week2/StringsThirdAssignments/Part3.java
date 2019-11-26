@@ -8,12 +8,14 @@
 import edu.duke.*;
 import java.io.*;
 public class Part3 {
+    
     Part1 p1 = new Part1();    
     Part2 p2 = new Part2();
 
     public void processGenes(StorageResource sr){
-        int numStringLonger9 = 0;
-        int numStringcgRatio035 = 0;
+        //int numStringLonger9 = 0;
+        //int numStringcgRatio035 = 0;
+        
         int longestGene = 0;
         StorageResource geneSizeLarge9 = new StorageResource();
         StorageResource geneRatioHigher035 = new StorageResource();

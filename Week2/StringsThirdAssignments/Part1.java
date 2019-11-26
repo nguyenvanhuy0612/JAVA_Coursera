@@ -9,6 +9,12 @@ import java.io.*;
 import edu.duke.*;
 
 public class Part1 {
+    /*
+     * - phương thức collectDNA sẽ lấy chuỗi dna từ file bất kì và trả về một giá trị String.
+     * 
+     * 
+     * -trả về String
+     */
     public String collectDNA(){
         FileResource f = new FileResource();
         String dna = f.asString();
@@ -18,16 +24,36 @@ public class Part1 {
         return dna;
     }
 
+    
+    /*
+     * - findStopIndex: tìm từ chuỗi dna, bắt đầu từ vị trí startIndex, với giá trị cần tìm
+     * là stopCodon
+     * 
+     * - trả về int
+     */
     public int findStopIndex(String dna, int startIndex, String stopCodon){ //System.out.println("findStopIndex");
+
+        //Từ vị trí startIndex, ta tìm vị trí của stopCodon
         int currIndex = dna.indexOf(stopCodon, startIndex + 3);
+        
+        //sử dụng vòng lặp không biết trước số lần lặp lại
+        //với điều kiện thoát vòng lặp là currIndex = -1: nghĩa là không tìm đc vị trí của stopCodon
         while (currIndex != -1){
+            //khi đã chạy lệnh bên trong vòng while tức là điều kiện currIndex đã khác -1
+            //Tìm khoảng cách từ startIndex đến stopCodon
             int distance = currIndex - startIndex;
+            //nếu khoảng cách này chia hết cho 3
             if (distance %3 == 0){
+                //trả về giá trị cần tìm là currIndex. Không chạy thêm lệnh nào ở hàm này nữa
                 return currIndex;
             }
+            //khi khoảng cách không chia hết cho 3, chúng ta sẽ tìm vị trí của điểm stopCodon
+            //mới. vị trí này bắt đầu từ vị trí tìm đc stopCodon + 1
             currIndex = dna.indexOf(stopCodon, currIndex + 1);
+            //mang giá trị currIndex mới đi so sánh với điều kiện trong vòng lặp while
         }
         // return dna.length();
+        //Nếu k có vị trí của stopCodon, trả về -1
         return -1;
     }
 
@@ -83,7 +109,7 @@ public class Part1 {
 
     public StorageResource getAllGenes(String dna){
         StorageResource sr = new StorageResource();
-        int startIndex = dna.indexOf("ATG");
+        int startIndex = 0;
         while (true){
             String currGene = findGene(dna, startIndex);
             if (currGene.isEmpty()){
