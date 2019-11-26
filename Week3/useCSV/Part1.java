@@ -8,7 +8,7 @@
 import edu.duke.*;
 import org.apache.commons.csv.*;
 public class Part1 {
-    
+
     public void tester() {
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
@@ -17,13 +17,13 @@ public class Part1 {
 
         //parser = fr.getCSVParser();
         //System.out.println(countryInfo(parser, "Germany"));
-        
+
         //parser = fr.getCSVParser();
         //listExportersTwoProducts(parser, "gold", "diamonds");
-        
+
         //parser = fr.getCSVParser();
         //System.out.println("numberOfExporters: " + numberOfExporters(parser, "gold"));
-        
+
         parser = fr.getCSVParser();
         bigExporters(parser, "$999,999,999");
     }
@@ -47,24 +47,31 @@ public class Part1 {
             }
         } 
     }
-    
+
     public int numberOfExporters(CSVParser parser, String exportItem){
         int count = 0;
-            for (CSVRecord record : parser){
+        for (CSVRecord record : parser){
             if (record.get("Exports").contains(exportItem)){
                 count++;
             }
         }
         return count;
     }
-    
-    public Double convertToDouble(String input){
+
+    public double convertToDouble(String input){
         String currString = input.replace("$", "");
         currString = currString.replace(",", "");
-        Double stringToNumber = Double.parseDouble(currString);
+        //double stringToNumber = Double.parseDouble(currString);
+        // try {
+            // Double.parseDouble(currString);
+        // }   catch (Exception e){
+            // System.out.println("wrong value dolla format");
+            // return 1;
+        // }
+        double stringToNumber = Double.parseDouble(currString);
         return stringToNumber;
     }
-    
+
     public void bigExporters(CSVParser parser, String amount){
         double amountNum = convertToDouble(amount);
         for (CSVRecord record : parser){
