@@ -17,12 +17,11 @@ public class test {
         int tagIndex = p1.findStopIndex(dna, startIndex, "TAG"); 
         int tgaIndex = p1.findStopIndex(dna, startIndex, "TGA");
         int minIndex = 0;
-        
+
         if (taaIndex*tagIndex == 1){ minIndex = -1;}
         else if (taaIndex*tagIndex == -1){ minIndex = -1*taaIndex*tagIndex;}
-        else{ minIndex = Math.min(taaIndex,tagIndex
-        
-        
+        else{ minIndex = Math.min(taaIndex,tagIndex);}
+
         
         return dna.substring(startIndex, minIndex + 3);
     }
@@ -45,7 +44,7 @@ public class test {
                 }else{
                     cIndex = dna.indexOf("C", cIndex+1);
                 }
-                
+
             }else{
                 countcg += 2;
                 cIndex = dna.indexOf("C", cIndex+1);
@@ -54,5 +53,16 @@ public class test {
 
         }
         return (double) countcg/ dna.length();
+
     }
+
+    public void testUpperCase() {
+        String dna = "atgctagctacgactacg";
+        dna = dna.toUpperCase();
+        System.out.println("DNA: "+dna+" lengh "+dna.length());
+        dna = dna.toUpperCase();
+        System.out.println("DNA: "+dna+"lengh "+dna.length());
+    }
+
 }
+
