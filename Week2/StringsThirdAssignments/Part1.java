@@ -73,20 +73,20 @@ public class Part1 {
         return Math.min(num1,num2);
     }
 
-    public String findGene(String DNA, int beginDNAIndex){
-        String dna = DNA.toUpperCase();
-        int startIndex = dna.indexOf("ATG", beginDNAIndex);
+    public String findGene(String dna, int beginDNAIndex){
+        String DNA = dna.toUpperCase();
+        int startIndex = DNA.indexOf("ATG", beginDNAIndex);
         if (startIndex == -1){return ""; }
 
-        int taaIndex = findStopIndex(dna, startIndex, "TAA");
-        int tagIndex = findStopIndex(dna, startIndex, "TAG");
-        int tgaIndex = findStopIndex(dna, startIndex, "TGA");
+        int taaIndex = findStopIndex(DNA, startIndex, "TAA");
+        int tagIndex = findStopIndex(DNA, startIndex, "TAG");
+        int tgaIndex = findStopIndex(DNA, startIndex, "TGA");
         
         int minIndex = findPositiveInterger(findPositiveInterger(taaIndex, tagIndex), tgaIndex);
 
         if (minIndex == -1){ return ""; }
 
-        return DNA.substring(startIndex, minIndex + 3);
+        return dna.substring(startIndex, minIndex + 3);
     }
 
     public void testFindGene(){
