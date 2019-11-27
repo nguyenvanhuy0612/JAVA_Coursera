@@ -19,7 +19,6 @@ public class Part1 {
         FileResource f = new FileResource();
         String dna = f.asString();
         dna = dna.replaceAll("\\s+", "");
-        dna = dna.toUpperCase();
         //for (String s : f.words()){
             //dna += s;
         //}
@@ -74,7 +73,8 @@ public class Part1 {
         return Math.min(num1,num2);
     }
 
-    public String findGene(String dna, int beginDNAIndex){
+    public String findGene(String DNA, int beginDNAIndex){
+        String dna = DNA.toUpperCase();
         int startIndex = dna.indexOf("ATG", beginDNAIndex);
         if (startIndex == -1){return ""; }
 
@@ -86,7 +86,7 @@ public class Part1 {
 
         if (minIndex == -1){ return ""; }
 
-        return dna.substring(startIndex, minIndex + 3);
+        return DNA.substring(startIndex, minIndex + 3);
     }
 
     public void testFindGene(){
@@ -98,7 +98,7 @@ public class Part1 {
     }
 
     public void printAllGenes(String dna){
-        int beginGene = dna.indexOf("ATG");
+        int beginGene = 0;
         while (true){
             String currGene = findGene(dna, beginGene);
             if (currGene.isEmpty()){

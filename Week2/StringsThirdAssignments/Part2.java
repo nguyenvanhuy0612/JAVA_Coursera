@@ -19,6 +19,7 @@ public class Part2 {
     }
 
     public double cgRatio(String dna){
+        dna = dna.toUpperCase();
         int cIndex = countIndex(dna, "C");
         int gIndex = countIndex(dna, "G");
         //System.out.println("cIndex "+cIndex);

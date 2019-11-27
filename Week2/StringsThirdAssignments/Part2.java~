@@ -7,6 +7,7 @@
  */
 
 public class Part2 {
+    
     public int countIndex(String dna, String input){
         int currIndex = dna.indexOf(input);
         int count = 0;
@@ -18,6 +19,7 @@ public class Part2 {
     }
 
     public double cgRatio(String dna){
+        
         int cIndex = countIndex(dna, "C");
         int gIndex = countIndex(dna, "G");
         //System.out.println("cIndex "+cIndex);

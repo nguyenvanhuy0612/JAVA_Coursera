@@ -65,7 +65,7 @@ public class Part3 {
     
     public void testProcessGenes(){
         String dna = p1.collectDNA();
-        dna = dna.toUpperCase();
+        //dna = dna.toUpperCase();
         //System.out.println(dna);
         //System.out.println("==============================================");
         System.out.println("dna.length() "+dna.length());
