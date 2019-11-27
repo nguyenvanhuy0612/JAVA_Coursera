@@ -18,6 +18,7 @@ public class Part1 {
     public String collectDNA(){
         FileResource f = new FileResource();
         String dna = f.asString();
+        dna = dna.replaceAll("\\s+", "");
         //for (String s : f.words()){
             //dna += s;
         //}

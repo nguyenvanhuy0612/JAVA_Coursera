@@ -15,6 +15,7 @@ public class Part3 {
     public void processGenes(StorageResource sr){
         //int numStringLonger9 = 0;
         //int numStringcgRatio035 = 0;
+        
         int longestGene = 0;
         StorageResource geneSizeLarge9 = new StorageResource();
         StorageResource geneRatioHigher035 = new StorageResource();
@@ -36,10 +37,10 @@ public class Part3 {
         }
 
         // print all the Strings in sr that are longer than 9 characters
-        System.out.println("==============================================");
-        for (String gene : geneSizeLarge9.data()){
-            System.out.println("geneSizeLarge9 "+gene);
-        }
+        // System.out.println("==============================================");
+        // for (String gene : geneSizeLarge9.data()){
+            // System.out.println("geneSizeLarge9 "+gene);
+        // }
 
         // print the number of Strings in sr that are longer than 9 characters
         System.out.println("==============================================");
