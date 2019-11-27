@@ -19,6 +19,7 @@ public class Part1 {
         FileResource f = new FileResource();
         String dna = f.asString();
         dna = dna.replaceAll("\\s+", "");
+        dna = dna.toUpperCase();
         //for (String s : f.words()){
             //dna += s;
         //}
