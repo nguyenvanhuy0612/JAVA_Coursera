@@ -27,27 +27,13 @@ public class test {
     }
 
     public double cgRatio(String dna){
-        int cIndex = dna.indexOf("C");
-        int gIndex = dna.indexOf("G");
+        int i = 0;
         int countcg = 0;
-        System.out.println("dna.length() "+dna.length());
-        //System.out.println("gIndex "+gIndex);
-        while (cIndex*gIndex != 1){
-
-            if (Math.min(cIndex, gIndex) == -1 ){
+        while (i < dna.length()){
+            if ( 'C' == dna.charAt(i) || 'G' == dna.charAt(i) ){
                 countcg++;
-                if (cIndex == -1){
-                    gIndex = dna.indexOf("G", gIndex+1);
-                }else{
-                    cIndex = dna.indexOf("C", cIndex+1);
-                }
-
-            }else{
-                countcg += 2;
-                cIndex = dna.indexOf("C", cIndex+1);
-                gIndex = dna.indexOf("G", gIndex+1);
             }
-
+            i++;
         }
         return (double) countcg/ dna.length();
 
