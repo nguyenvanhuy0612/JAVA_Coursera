@@ -1,12 +1,12 @@
 #BlueJ package file
-dependency1.from=Part3
+dependency1.from=test
 dependency1.to=Part1
 dependency1.type=UsesDependency
 dependency2.from=Part3
-dependency2.to=Part2
+dependency2.to=Part1
 dependency2.type=UsesDependency
-dependency3.from=test
-dependency3.to=Part1
+dependency3.from=Part3
+dependency3.to=Part2
 dependency3.type=UsesDependency
 editor.fx.0.height=645
 editor.fx.0.width=753
@@ -18,8 +18,8 @@ package.divider.horizontal=0.5995055624227441
 package.divider.vertical=0.6774193548387096
 package.editor.height=371
 package.editor.width=715
-package.editor.x=22
-package.editor.y=38
+package.editor.x=109
+package.editor.y=49
 package.frame.height=658
 package.frame.width=845
 package.numDependencies=3

@@ -44,12 +44,12 @@ public class Part1 {
             return "";
         }
 
-        int taaIndex = findStopIndex(dna, startIndex, "TAA");   System.out.println("taaIndex "+taaIndex);
-        int tagIndex = findStopIndex(dna, startIndex, "TAG");   System.out.println("tagIndex "+tagIndex);
-        int tgaIndex = findStopIndex(dna, startIndex, "TGA");   System.out.println("tgaIndex "+tgaIndex);
+        int taaIndex = findStopIndex(dna, startIndex, "TAA");   //System.out.println("taaIndex "+taaIndex);
+        int tagIndex = findStopIndex(dna, startIndex, "TAG");   //System.out.println("tagIndex "+tagIndex);
+        int tgaIndex = findStopIndex(dna, startIndex, "TGA");   //System.out.println("tgaIndex "+tgaIndex);
 
         int minIndex = Math.min(taaIndex, tagIndex);
-        minIndex = Math.min(minIndex, tgaIndex);                System.out.println("minIndex "+minIndex);
+        minIndex = Math.min(minIndex, tgaIndex);                //System.out.println("minIndex "+minIndex);
 
         if (minIndex == dna.length()){
             return "";
