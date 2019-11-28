@@ -6,4 +6,6 @@ comment2.params=parser\ country
 comment2.target=java.lang.String\ countryInfo(org.apache.commons.csv.CSVParser,\ java.lang.String)
 comment3.params=
 comment3.target=void\ testcountryInfo()
-numComments=4
+comment4.params=
+comment4.target=void\ testReplace()
+numComments=5

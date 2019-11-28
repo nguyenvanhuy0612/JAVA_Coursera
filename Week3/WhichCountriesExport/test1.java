@@ -12,7 +12,6 @@ public class test1 {
     public CSVParser tester(){
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
-        parser = fr.getCSVParser();
         return parser;
     }
 
@@ -41,5 +40,20 @@ public class test1 {
         String c = b.replaceAll(",", "");
         double aa = Double.parseDouble(c);
 
+    }
+    
+    
+    public void testReplace(){
+        String abc = "Toi la Huy, ban la ai Huy";
+        String def = abc.replace('H', 'K');
+        System.out.println("abc "+abc);
+        System.out.println("def "+def);
+        
+        String ghi = abc.replaceFirst("l", "M");
+
+        System.out.println("ghi "+ghi);
+        
+        
+        
     }
 }
