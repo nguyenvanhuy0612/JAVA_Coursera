@@ -21,7 +21,7 @@ public class test {
         if (taaIndex*tagIndex == 1){ minIndex = -1;}
         else if (taaIndex*tagIndex == -1){ minIndex = -1*taaIndex*tagIndex;}
         else{ minIndex = Math.min(taaIndex,tagIndex);}
-
+        
         
         return dna.substring(startIndex, minIndex + 3);
     }
@@ -32,10 +32,7 @@ public class test {
         int countcg = 0;
         System.out.println("dna.length() "+dna.length());
         //System.out.println("gIndex "+gIndex);
-        while (true){
-            if (cIndex*gIndex == 1){
-                break;
-            }
+        while (cIndex*gIndex != 1){
 
             if (Math.min(cIndex, gIndex) == -1 ){
                 countcg++;
