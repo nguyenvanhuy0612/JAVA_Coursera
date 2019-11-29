@@ -42,6 +42,7 @@ public class CSVMax {
             largestSoFar = getLargestOfTwoRow(currentRow, largestSoFar);
 
         }
+        System.out.println("largestSoFar: " +largestSoFar.toString());
         return largestSoFar;
     }
 

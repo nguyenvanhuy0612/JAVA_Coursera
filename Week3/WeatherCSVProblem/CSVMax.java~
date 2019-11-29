@@ -8,18 +8,7 @@
 import edu.duke.*;
 import org.apache.commons.csv.*;
 import java.io.*;
-    public CSVRecord getLargestOfTwoRow(CSVRecord currentRow, CSVRecord largestSoFar){
-        if (largestSoFar == null){
-            largestSoFar = currentRow;
-        }else{
-            double currentTemperature = Double.parseDouble(currentRow.get("TemperatureF"));
-            double largestTemperature = Double.parseDouble(largestSoFar.get("TemperatureF"));
-            if (currentTemperature > largestTemperature){
-                largestSoFar = currentRow;
-            }
-        }
-        return largestSoFar;
-    }
+
 public class CSVMax {
 
     public CSVRecord getLargestOfTwoRow(CSVRecord currentRow, CSVRecord largestSoFar){
