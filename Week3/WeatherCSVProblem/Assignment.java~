@@ -33,14 +33,15 @@ public class Assignment {
         return lowestSoFar; //maybe null
     }
 
-
     public String fileWithColdestTemperature(){
         File fileWithColdestTemp = null;
         CSVRecord lowestTemp = null;
+        
         DirectoryResource dr = new DirectoryResource();
         for (File f : dr.selectedFiles()){
             FileResource fr = new FileResource(f);
             CSVParser currentParser = fr.getCSVParser();
+            
             CSVRecord currentRecord = coldestHourInFile(currentParser);
             if (lowestTemp == null){
                 lowestTemp = currentRecord;
