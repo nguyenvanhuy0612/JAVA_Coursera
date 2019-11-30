@@ -9,7 +9,7 @@ import edu.duke.*;
 import org.apache.commons.csv.*;
 import java.io.*;
 
-public class Assignment {
+public class ExAssignment {
 
     public CSVRecord getLowestTemperatureOfTwoRow(CSVRecord lowestSoFar, CSVRecord currentRow){
         if (lowestSoFar == null){

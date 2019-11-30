@@ -1,5 +1,5 @@
 #BlueJ class context
-comment0.target=Assignment
+comment0.target=ExAssignment
 comment1.params=lowestSoFar\ currentRow
 comment1.target=org.apache.commons.csv.CSVRecord\ getLowestTemperatureOfTwoRow(org.apache.commons.csv.CSVRecord,\ org.apache.commons.csv.CSVRecord)
 comment10.params=
