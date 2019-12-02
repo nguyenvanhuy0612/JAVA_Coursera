@@ -11,6 +11,9 @@ import java.io.*;
 
 public class ExAssignment {
 
+    //Temperature
+    //=======================================================================================================================
+    
     public CSVRecord getLowestTemperatureOfTwoRow(CSVRecord lowestSoFar, CSVRecord currentRow){
         if (lowestSoFar == null){
             lowestSoFar = currentRow;
@@ -53,18 +56,12 @@ public class ExAssignment {
                 }
             }
         }
-        String fileName = fileWithColdestTemp.getName();
-        System.out.println("Coldest day was in the file "+fileName);
-        System.out.println("Coldest temperature on that day was "+lowestTemp.get("TemperatureF"));
-
-        FileResource fr = new FileResource(fileWithColdestTemp);
-        System.out.println("All the Temperature on the coldest day were: "); 
-        for (CSVRecord row : fr.getCSVParser()){       
-            System.out.println(row.get("DateUTC")+" "+row.get("TemperatureF"));
-        }
-        return fileName; //not null
+        return fileWithColdestTemp.getName(); //not null
     }
-
+    
+    //Humidity
+    //=======================================================================================================================
+    
     public CSVRecord getLowestHumidityOfTwoRow(CSVRecord lowestSoFar, CSVRecord currentRow){
         if (lowestSoFar == null){
             lowestSoFar = currentRow;
@@ -88,6 +85,9 @@ public class ExAssignment {
         return lowestSoFar;
     }
 
+    //average Temperature
+    //=======================================================================================================================
+    
     public double averageTemperatureInFile(CSVParser parser){
         double totalTemperature = 0;
         int totaRow = 0;
@@ -117,6 +117,9 @@ public class ExAssignment {
         return totalTemperature/totalRow;
     }
 
+    //TEST
+    //=======================================================================================================================
+    
     public void testColdestHourInFile(){
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
@@ -125,7 +128,15 @@ public class ExAssignment {
     }
     
     public void testFileWithColdestTemperature(){
-        String abc = fileWithColdestTemperature();
+        String fileName =  fileWithColdestTemperature();
+        System.out.println("Coldest day was in the file "+fileName);
+        FileResource fr = new FileResource(fileName);
+        CSVParser parser = fr.getCSVParser();
+        System.out.println("Coldest temperature on that day was "+coldestHourInFile(parser).get("TemperatureF"));
+        System.out.println("All the Temperature on the coldest day were: ");
+        for (CSVRecord row : parser){       
+            System.out.println(row.get("DateUTC")+" "+row.get("TemperatureF"));
+        }
     }
     
     public void testLowestHumidityInFile(){
