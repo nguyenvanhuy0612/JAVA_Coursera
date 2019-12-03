@@ -92,6 +92,26 @@ public class Assignment {
         return lowestSoFar;
     }
 
+    public CSVRecord lowestHumidityInManyFiles(){
+        CSVRecord lowestHumRow = null;
+        DirectoryResource dr = new DirectoryResource();
+        for (File f : dr.selectedFiles()){
+            FileResource fr = new FileResource(f);
+            CSVParser currentParser = fr.getCSVParser();
+            CSVRecord currentRecord = lowestHumidityInFile(currentParser);  //rarely null
+            if (lowestHumRow == null){
+                lowestHumRow = currentRecord;
+            }else{
+                double currentHumidity = Double.parseDouble(currentRecord.get("Humidity"));
+                double lowestHumidity = Double.parseDouble(lowestHumRow.get("Humidity"));
+                if (lowestHumidity > currentHumidity){
+                    lowestHumRow = currentRecord;
+                }
+            }
+        }
+        return lowestHumRow;
+    }
+
     public String fileWithLowestHumidity(){
         File fileLowestHum = null;
         CSVRecord lowestHumRow = null;
@@ -182,6 +202,11 @@ public class Assignment {
         CSVParser parser = fr.getCSVParser();
         CSVRecord lowestHumidity = lowestHumidityInFile(parser);
         System.out.println("Lowest Humidity was "+lowestHumidity.get("Humidity")+" at "+lowestHumidity.get("DateUTC"));
+    }
+
+    public void testLowestHumidityInManyFiles(){
+        CSVRecord lowestInFile = lowestHumidityInManyFiles();
+        System.out.println("Lowest Humidity was "+lowestInFile.get("Humidity")+" at "+lowestInFile.get("DateUTC"));
     }
 
     public void testFileWithLowestHumidity(){

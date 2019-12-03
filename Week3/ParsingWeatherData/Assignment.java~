@@ -92,6 +92,26 @@ public class Assignment {
         return lowestSoFar;
     }
 
+    public CSVRecord lowestHumidityInManyFiles(){
+        CSVRecord lowestHumRow = null;
+        DirectoryResource dr = new DirectoryResource();
+        for (File f : dr.selectedFiles()){
+            FileResource fr = new FileResource(f);
+            CSVParser currentParser = fr.getCSVParser();
+            CSVRecord currentRecord = lowestHumidityInFile(currentParser);  //rarely null
+            if (lowestHumRow == null){
+                lowestHumRow = currentRecord;
+            }else{
+                double currentHumidity = Double.parseDouble(currentRecord.get("Humidity"));
+                double lowestHumidity = Double.parseDouble(lowestHumRow.get("Humidity"));
+                if (lowestHumidity > currentHumidity){
+                    lowestHumRow = currentRecord;
+                }
+            }
+        }
+        return lowestHumRow;
+    }
+
     public String fileWithLowestHumidity(){
         File fileLowestHum = null;
         CSVRecord lowestHumRow = null;
@@ -184,6 +204,11 @@ public class Assignment {
         System.out.println("Lowest Humidity was "+lowestHumidity.get("Humidity")+" at "+lowestHumidity.get("DateUTC"));
     }
 
+    public void testLowestHumidityInManyFiles()() {
+        CSVRecord lowestInFile = lowestHumidityInManyFiles();
+        System.out.println("Lowest Humidity was "+lowestInFile.get("Humidity")+" at "+lowestInFile.get("DateUTC"));
+    }
+
     public void testFileWithLowestHumidity(){
         String fileName = fileWithLowestHumidity();
         System.out.println("Lowest Humidity of day was in the file "+fileName);
@@ -210,7 +235,7 @@ public class Assignment {
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
         double avgTemperature = averageTemperatureWithHighHumidityInFile(parser, 80);
-        if ( avgTemperature > 0){
+        if ( avgTemperature != -1){
             System.out.println("Average Temp when high Humidity is "+avgTemperature);
         }
     }
