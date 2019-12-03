@@ -35,39 +35,31 @@ public class Assignment {
         for (CSVRecord currentRow : parser){
             lowestSoFar = getLowestTemperatureOfTwoRow(lowestSoFar, currentRow);
         }
-        return lowestSoFar; //maybe null
+        return lowestSoFar; //maybe null but rarely occurs (1), if not null, lowestTemp was found
     }
 
     public String fileWithColdestTemperature(){
         File fileLowesTemp = null;
         CSVRecord lowestTempRec = null;
+        
         DirectoryResource dr = new DirectoryResource();
         for (File f : dr.selectedFiles()){
             FileResource fr = new FileResource(f);
             CSVParser currentParser = fr.getCSVParser();
-            CSVRecord currentRecord = coldestHourInFile(currentParser);// Row in file f that min temperature
-
-            while (true){
-                if (currentRecord == null){
-                    System.out.println(f.getName() + " is null");
-                    break;
-                }
-                if (lowestTempRec == null){
-                    lowestTempRec = currentRecord;
-                    fileLowesTemp = f;
-                    break;
-                }
-                double currentTemperature = Double.parseDouble(currentRecord.get("TemperatureF"));
-                double lowestTemperature = Double.parseDouble(lowestTempRec.get("TemperatureF"));
+            CSVRecord currentRecord = coldestHourInFile(currentParser);// Row in file f that min temperature .with (1), currentRecord is rarely null
+            if (lowestTempRec == null){
+                lowestTempRec = currentRecord;
+                fileLowesTemp = f;
+            }else{
+                String currTemp = currentRecord.get("TemperatureF");
+                String lowestTemp = lowestTempRec.get("TemperatureF");
+                double currentTemperature = Double.parseDouble(currTemp);
+                double lowestTemperature = Double.parseDouble(lowestTemp);
                 if (lowestTemperature > currentTemperature && currentTemperature != -9999){
                     lowestTempRec = currentRecord;
                     fileLowesTemp = f;
                 }
-                break;
             }
-        }
-        if (fileLowesTemp == null){
-            return "File not found";
         }
         return fileLowesTemp.getName(); //not null
     }
