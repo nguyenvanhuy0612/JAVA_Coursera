@@ -122,9 +122,12 @@ public class Assignment {
         double totalTemperature = 0;
         int totaRow = 0;
         for (CSVRecord currentRow : parser){
-            double currentTemperature = Double.parseDouble(currentRow.get("TemperatureF"));
-            totalTemperature += currentTemperature;
-            totaRow++;
+            String currTemp = currentRow.get("TemperatureF");
+            if (currTemp.matches("-?\\d+(\\.\\d+)?") && !currTemp.equals("-9999")){
+                double currentTemperature = Double.parseDouble(currTemp);
+                totalTemperature += currentTemperature;
+                totaRow++;
+            }
         }
         return totalTemperature/totaRow;
     }
@@ -133,10 +136,10 @@ public class Assignment {
         double totalTemperature = 0;
         int totalRow = 0;
         for (CSVRecord currentRow : parser){
-            double currentHumidity = Double.parseDouble(currentRow.get("Humidity"));
-            if (currentHumidity >= value){
-                double currentTemperature = Double.parseDouble(currentRow.get("TemperatureF"));
-                totalTemperature += currentTemperature;
+            String currHum = currentRow.get("Humidity");
+            String currTemp = currentRow.get("TemperatureF");                                                                           //currHum.intern() != "N\\A"
+            if (currHum.matches("-?\\d+(\\.\\d+)?") && currTemp.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(currHum) >= value){   //https://www.javatpoint.com/java-string-intern
+                totalTemperature += Double.parseDouble(currTemp);
                 totalRow++;
             }
         }
