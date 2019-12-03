@@ -139,14 +139,13 @@ public class Assignment {
             String currHum = currentRow.get("Humidity");
             String currTemp = currentRow.get("TemperatureF");                                                                           //currHum.intern() != "N\\A"
             if (currHum.matches("-?\\d+(\\.\\d+)?") && currTemp.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(currHum) >= value){   //https://www.javatpoint.com/java-string-intern
-                double currentTemperature = ;
                 totalTemperature += Double.parseDouble(currTemp);
                 totalRow++;
             }
         }
         if (totalRow == 0){
             System.out.println("No temperature with that humidity");
-            totalRow = -1;
+            return -1;
         }
         return totalTemperature/totalRow;
     }
@@ -164,7 +163,7 @@ public class Assignment {
     public void testFileWithColdestTemperature(){
         String fileName = fileWithColdestTemperature();
         System.out.println("Coldest day was in the file "+fileName);
-        System.out.println("File: "+"nc_weather\\2014\\"+fileName);
+        //System.out.println("File: "+"nc_weather\\2014\\"+fileName);
 
         FileResource fr = new FileResource("nc_weather\\2014\\"+fileName);
         CSVParser parser = fr.getCSVParser();
@@ -176,6 +175,13 @@ public class Assignment {
         for (CSVRecord row : parser){       
             System.out.println(row.get("DateUTC")+" "+row.get("TemperatureF"));
         }
+    }
+
+    public void testLowestHumidityInFile(){
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        CSVRecord lowestHumidity = lowestHumidityInFile(parser);
+        System.out.println("Lowest Humidity was "+lowestHumidity.get("Humidity")+" at "+lowestHumidity.get("DateUTC"));
     }
 
     public void testFileWithLowestHumidity(){
@@ -193,13 +199,6 @@ public class Assignment {
         for (CSVRecord row : parser){       
             System.out.println(row.get("DateUTC")+" "+row.get("Humidity"));
         }
-    }
-
-    public void testLowestHumidityInFile(){
-        FileResource fr = new FileResource();
-        CSVParser parser = fr.getCSVParser();
-        CSVRecord lowestHumidity = lowestHumidityInFile(parser);
-        System.out.println("Lowest Humidity was "+lowestHumidity.get("Humidity")+" at "+lowestHumidity.get("DateUTC"));
     }
 
     public void testAverageTemperatureInFile(){

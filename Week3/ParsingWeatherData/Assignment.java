@@ -145,7 +145,7 @@ public class Assignment {
         }
         if (totalRow == 0){
             System.out.println("No temperature with that humidity");
-            totalRow = -1;
+            return -1;
         }
         return totalTemperature/totalRow;
     }
@@ -163,7 +163,7 @@ public class Assignment {
     public void testFileWithColdestTemperature(){
         String fileName = fileWithColdestTemperature();
         System.out.println("Coldest day was in the file "+fileName);
-        System.out.println("File: "+"nc_weather\\2014\\"+fileName);
+        //System.out.println("File: "+"nc_weather\\2014\\"+fileName);
 
         FileResource fr = new FileResource("nc_weather\\2014\\"+fileName);
         CSVParser parser = fr.getCSVParser();
@@ -175,6 +175,13 @@ public class Assignment {
         for (CSVRecord row : parser){       
             System.out.println(row.get("DateUTC")+" "+row.get("TemperatureF"));
         }
+    }
+
+    public void testLowestHumidityInFile(){
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        CSVRecord lowestHumidity = lowestHumidityInFile(parser);
+        System.out.println("Lowest Humidity was "+lowestHumidity.get("Humidity")+" at "+lowestHumidity.get("DateUTC"));
     }
 
     public void testFileWithLowestHumidity(){
@@ -194,13 +201,6 @@ public class Assignment {
         }
     }
 
-    public void testLowestHumidityInFile(){
-        FileResource fr = new FileResource();
-        CSVParser parser = fr.getCSVParser();
-        CSVRecord lowestHumidity = lowestHumidityInFile(parser);
-        System.out.println("Lowest Humidity was "+lowestHumidity.get("Humidity")+" at "+lowestHumidity.get("DateUTC"));
-    }
-
     public void testAverageTemperatureInFile(){
         FileResource fr = new FileResource();
         System.out.println("Average temperature in file is " + averageTemperatureInFile(fr.getCSVParser()) + ".");
@@ -210,7 +210,7 @@ public class Assignment {
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
         double avgTemperature = averageTemperatureWithHighHumidityInFile(parser, 80);
-        if ( avgTemperature > 0){
+        if ( avgTemperature != -1){
             System.out.println("Average Temp when high Humidity is "+avgTemperature);
         }
     }
