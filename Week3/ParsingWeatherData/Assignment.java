@@ -15,7 +15,7 @@ public class Assignment {
 
     public CSVRecord getLowestTemperatureOfTwoRow(CSVRecord lowestSoFar, CSVRecord currentRow){
         String currTemp = currentRow.get("TemperatureF");
-        if (!(currTemp.matches("-?\\d+(\\.\\d+)?"))){
+        if (!currTemp.matches("-?\\d+(\\.\\d+)?")){
             return lowestSoFar; //maybe null
         }
         if (lowestSoFar == null){
@@ -39,49 +39,49 @@ public class Assignment {
     }
 
     public String fileWithColdestTemperature(){
-        File fileLowesTemp = null;
-        CSVRecord lowestTempRec = null;
-        
+        File fileLowestTemp = null;
+        CSVRecord lowestTempRow = null;
+
         DirectoryResource dr = new DirectoryResource();
         for (File f : dr.selectedFiles()){
             FileResource fr = new FileResource(f);
             CSVParser currentParser = fr.getCSVParser();
             CSVRecord currentRecord = coldestHourInFile(currentParser);// Row in file f that min temperature .with (1), currentRecord is rarely null
-            if (lowestTempRec == null){
-                lowestTempRec = currentRecord;
-                fileLowesTemp = f;
+            if (lowestTempRow == null){
+                lowestTempRow = currentRecord;
+                fileLowestTemp = f;
             }else{
                 String currTemp = currentRecord.get("TemperatureF");
-                String lowestTemp = lowestTempRec.get("TemperatureF");
+                String lowestTemp = lowestTempRow.get("TemperatureF");
                 double currentTemperature = Double.parseDouble(currTemp);
                 double lowestTemperature = Double.parseDouble(lowestTemp);
                 if (lowestTemperature > currentTemperature && currentTemperature != -9999){
-                    lowestTempRec = currentRecord;
-                    fileLowesTemp = f;
+                    lowestTempRow = currentRecord;
+                    fileLowestTemp = f;
                 }
             }
         }
-        return fileLowesTemp.getName(); //not null
+        return fileLowestTemp.getName(); //not null
     }
 
     //=======================================================================================
     //Humidity
 
     public CSVRecord getLowestHumidityOfTwoRow(CSVRecord lowestSoFar, CSVRecord currentRow){
-        if (lowestSoFar == null){
-            lowestSoFar = currentRow;
-        }else{
-            String currHum = currentRow.get("Humidity");
-            String lowestHum = lowestSoFar.get("Humidity");
-            if (currHum.matches("-?\\d+(\\.\\d+)?") && lowestHum.matches("-?\\d+(\\.\\d+)?")){
-                double currentHumidity = Double.parseDouble(currHum);
-                double lowestHumidity = Double.parseDouble(lowestHum);
-                if (lowestHumidity > currentHumidity){
-                    lowestSoFar = currentRow;
-                }
-            }
+        String currHum = currentRow.get("Humidity");
+        if (!currHum.matches("-?\\d+(\\.\\d+)?")){
+            return lowestSoFar; //maybe null
         }
-        return lowestSoFar; //maybe null
+        if (lowestSoFar == null){
+            return currentRow; //not null
+        }
+        String lowestHum = lowestSoFar.get("Humidity");
+        double currentHumidity = Double.parseDouble(currHum);
+        double lowestHumidity = Double.parseDouble(lowestHum);
+        if (lowestHumidity > currentHumidity){
+            return currentRow; //not null
+        }
+        return lowestSoFar; //not null
     }
 
     public CSVRecord lowestHumidityInFile(CSVParser parser){
@@ -89,23 +89,20 @@ public class Assignment {
         for (CSVRecord currentRow : parser){
             lowestSoFar = getLowestHumidityOfTwoRow(lowestSoFar, currentRow);
         }
-        //System.out.println(lowestSoFar.toString());
-        //System.out.println("This return the first record that was found with lowest humidity");
         return lowestSoFar;
     }
 
     public String fileWithLowestHumidity(){
         File fileLowestHum = null;
         CSVRecord lowestHumRow = null;
-
         DirectoryResource dr = new DirectoryResource();
         for (File f : dr.selectedFiles()){
             FileResource fr = new FileResource(f);
             CSVParser currentParser = fr.getCSVParser();
-
-            CSVRecord currentRecord = lowestHumidityInFile(currentParser);
+            CSVRecord currentRecord = lowestHumidityInFile(currentParser);  //rarely null
             if (lowestHumRow == null){
                 lowestHumRow = currentRecord;
+                fileLowestHum = f;
             }else{
                 double currentHumidity = Double.parseDouble(currentRecord.get("Humidity"));
                 double lowestHumidity = Double.parseDouble(lowestHumRow.get("Humidity"));
@@ -115,8 +112,7 @@ public class Assignment {
                 }
             }
         }
-        String fileName = fileLowestHum.getName();
-        return fileName; //not null
+        return fileLowestHum.getName();
     }
 
     //=======================================================================================
