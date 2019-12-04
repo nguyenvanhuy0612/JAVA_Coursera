@@ -156,8 +156,8 @@ public class Assignment {
         int totalRow = 0;
         for (CSVRecord currentRow : parser){
             String currHum = currentRow.get("Humidity");
-            String currTemp = currentRow.get("TemperatureF");                                                                           //currHum.intern() != "N\\A"
-            if (currHum.matches("-?\\d+(\\.\\d+)?") && currTemp.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(currHum) >= value){   //https://www.javatpoint.com/java-string-intern
+            String currTemp = currentRow.get("TemperatureF");                                                                                                        //currHum.intern() != "N\\A"
+            if (currHum.matches("-?\\d+(\\.\\d+)?") && currTemp.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(currHum) >= value && !currTemp.equals("-9999")){   //https://www.javatpoint.com/java-string-intern
                 totalTemperature += Double.parseDouble(currTemp);
                 totalRow++;
             }

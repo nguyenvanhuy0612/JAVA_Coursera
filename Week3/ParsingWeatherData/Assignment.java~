@@ -157,7 +157,7 @@ public class Assignment {
         for (CSVRecord currentRow : parser){
             String currHum = currentRow.get("Humidity");
             String currTemp = currentRow.get("TemperatureF");                                                                           //currHum.intern() != "N\\A"
-            if (currHum.matches("-?\\d+(\\.\\d+)?") && currTemp.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(currHum) >= value){   //https://www.javatpoint.com/java-string-intern
+            if (currHum.matches("-?\\d+(\\.\\d+)?") && currTemp.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(currHum) >= value && !currTemp.equals("-9999")){   //https://www.javatpoint.com/java-string-intern
                 totalTemperature += Double.parseDouble(currTemp);
                 totalRow++;
             }
@@ -215,7 +215,7 @@ public class Assignment {
 
         FileResource fr = new FileResource("nc_weather\\2014\\"+fileName);
         CSVParser parser = fr.getCSVParser();
-        CSVRecord lowestHum = coldestHourInFile(parser);
+        CSVRecord lowestHum = lowestHumidityInFile(parser);
         System.out.println("Lowest Humidity on that day was "+lowestHum.get("Humidity"));
         System.out.println("All the Humidity on the coldest day were: ");
 
