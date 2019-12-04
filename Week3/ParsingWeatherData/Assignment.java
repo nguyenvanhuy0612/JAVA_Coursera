@@ -215,7 +215,7 @@ public class Assignment {
 
         FileResource fr = new FileResource("nc_weather\\2014\\"+fileName);
         CSVParser parser = fr.getCSVParser();
-        CSVRecord lowestHum = coldestHourInFile(parser);
+        CSVRecord lowestHum = lowestHumidityInFile(parser);
         System.out.println("Lowest Humidity on that day was "+lowestHum.get("Humidity"));
         System.out.println("All the Humidity on the coldest day were: ");
 

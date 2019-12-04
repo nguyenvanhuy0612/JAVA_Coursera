@@ -41,7 +41,6 @@ public class Assignment {
     public String fileWithColdestTemperature(){
         File fileLowestTemp = null;
         CSVRecord lowestTempRow = null;
-
         DirectoryResource dr = new DirectoryResource();
         for (File f : dr.selectedFiles()){
             FileResource fr = new FileResource(f);
