@@ -1,5 +1,5 @@
 #BlueJ class context
-comment0.target=testCSVMax
+comment0.target=temporary_CSVMax
 comment1.params=currentRow\ largestSoFar
 comment1.target=org.apache.commons.csv.CSVRecord\ getLargestOfTwoRow(org.apache.commons.csv.CSVRecord,\ org.apache.commons.csv.CSVRecord)
 comment2.params=parser

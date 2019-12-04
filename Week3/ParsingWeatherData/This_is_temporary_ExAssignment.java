@@ -9,7 +9,7 @@ import edu.duke.*;
 import org.apache.commons.csv.*;
 import java.io.*;
 
-public class ExAssignment {
+public class This_is_temporary_ExAssignment {
 
     //Temperature
     //=======================================================================================================================

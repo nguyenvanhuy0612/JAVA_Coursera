@@ -27,7 +27,7 @@ public class test2 {
                     sr.clear();
                     sr.add(largestSoFar.toString());
                 }else{
-                    sr.add(largestSoFar);
+                    sr.add(largestSoFar.toString());
                 }
             }
         }

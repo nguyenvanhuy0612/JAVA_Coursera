@@ -9,7 +9,7 @@ import edu.duke.*;
 import java.io.*;
 import org.apache.commons.csv.*;
 
-public class test2 {
+public class Temporary_test2 {
     
     public StorageResource getLargestOfTwoRow(CSVRecord currentRow, CSVRecord largestSoFar){
         
