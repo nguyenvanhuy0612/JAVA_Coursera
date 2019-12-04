@@ -2,8 +2,8 @@
 /**
  * Write a description of Assignments here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @nvhuy
+ * @v3.0 beta
  */
 import edu.duke.*;
 import org.apache.commons.csv.*;
@@ -35,18 +35,17 @@ public class Assignment {
         for (CSVRecord currentRow : parser){
             lowestSoFar = getLowestTemperatureOfTwoRow(lowestSoFar, currentRow);
         }
-        return lowestSoFar; //maybe null but rarely occurs (1), if not null, lowestTemp was found
+        return lowestSoFar; //maybe null but rarely occurs (1), if not null, lowestTemp found
     }
 
     public String fileWithColdestTemperature(){
         File fileLowestTemp = null;
         CSVRecord lowestTempRow = null;
-
         DirectoryResource dr = new DirectoryResource();
         for (File f : dr.selectedFiles()){
             FileResource fr = new FileResource(f);
             CSVParser currentParser = fr.getCSVParser();
-            CSVRecord currentRecord = coldestHourInFile(currentParser);// Row in file f that min temperature .with (1), currentRecord is rarely null
+            CSVRecord currentRecord = coldestHourInFile(currentParser);// Row in file f that min temperature .with (1), currentRecord is rarely null, and lowestTemp found
             if (lowestTempRow == null){
                 lowestTempRow = currentRecord;
                 fileLowestTemp = f;
@@ -61,7 +60,7 @@ public class Assignment {
                 }
             }
         }
-        return fileLowestTemp.getName(); //not null
+        return fileLowestTemp.getName();
     }
 
     //=======================================================================================
