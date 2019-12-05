@@ -31,5 +31,5 @@ comment7.target=java.lang.String\ fileWithLowestHumidity()
 comment8.params=parser
 comment8.target=double\ averageTemperatureInFile(org.apache.commons.csv.CSVParser)
 comment9.params=parser\ value
-comment9.target=double\ averageTemperatureWithHighHumidityInFile(org.apache.commons.csv.CSVParser,\ int)
+comment9.target=double\ averageTemperatureWithHighHumidityInFile(org.apache.commons.csv.CSVParser,\ double)
 numComments=17

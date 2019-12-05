@@ -8,6 +8,7 @@
 import edu.duke.*;
 import org.apache.commons.csv.*;
 import java.io.*;
+import java.util.*;
 
 public class Assignment {
 
@@ -151,7 +152,7 @@ public class Assignment {
         return totalTemperature/totaRow;
     }
 
-    public double averageTemperatureWithHighHumidityInFile(CSVParser parser, int value){
+    public double averageTemperatureWithHighHumidityInFile(CSVParser parser,double value){
         double totalTemperature = 0;
         int totalRow = 0;
         for (CSVRecord currentRow : parser){
@@ -233,9 +234,12 @@ public class Assignment {
     public void testAverageTemperatureWithHighHumidityInFile(){
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
-        double avgTemperature = averageTemperatureWithHighHumidityInFile(parser, 80);
+        Scanner abc = new Scanner(System.in);
+        System.out.println("Nhap vao gia tri cua Humidity: ");
+        double imHum = abc.nextDouble();
+        double avgTemperature = averageTemperatureWithHighHumidityInFile(parser, imHum);
         if ( avgTemperature != -1){
-            System.out.println("Average Temp when high Humidity is "+avgTemperature);
+            System.out.println("Average Temp when Humidity equals "+imHum+" is "+avgTemperature);
         }
     }
 }
