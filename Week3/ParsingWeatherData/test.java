@@ -20,7 +20,6 @@ public class test {
         // put your code here
         DirectoryResource dr =  new DirectoryResource();
         Iterable <File> f = dr.selectedFiles();
-        f = f.toString();
         System.out.println(f);
         
         
