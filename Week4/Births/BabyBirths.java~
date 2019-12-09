@@ -17,7 +17,7 @@ public class BabyBirths {
             if (numBorn <= 100){
                 System.out.println("Name "+ rec.get(0) +
                                    " Gender "+ rec.get(1) +
-                                    " Num Born "+ rec.get(2));
+                                   " Num Born "+ rec.get(2));
             }
         }
     }
