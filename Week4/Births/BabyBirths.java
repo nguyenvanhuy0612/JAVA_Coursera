@@ -23,22 +23,38 @@ public class BabyBirths {
     }
 
     public void totalBirths(FileResource fr ){
-        float totalBirths = 0;
+        //float totalBirths = 0;
         float totalGirls = 0;
         float totalBoys = 0;
         for (CSVRecord rec : fr.getCSVParser(false)){
             int numBorn = Integer.parseInt(rec.get(2));
-            if (rec.get(1).intern() == "f|F"){ //[fF]
+            if (rec.get(1).matches("[f|F]")){ //[fF]
                 totalGirls +=numBorn;
             }else{
                 totalBoys += numBorn;
             }
         }
-        System.out.println("total births: "+totalBirths);
+        System.out.println("totalGirls: "+totalGirls);
+        System.out.println("totalBoys: "+totalBoys);
     }
 
     public void testTotalBirths(){
         FileResource fr = new FileResource();
         totalBirths(fr);
+    }
+    
+    public int getRank(int year, String name, String gender){
+        int rank = -1;
+        FileResource fr = new FileResource("H:\\github\\Data_week4\\us_babynames_test\\yob"+year+"short.csv");
+        for (CSVRecord currRow : fr.getCSVParser(false)){
+            int numBorn = Integer.parseInt(currRow.get(2));
+            if (numBorn > rank){
+                
+            }
+            
+        }
+        
+        
+        return rank;
     }
 }

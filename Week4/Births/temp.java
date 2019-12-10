@@ -8,7 +8,7 @@
 import java.io.*;
 import org.apache.commons.csv.*;
 import edu.duke.*;
-public class BabyBirths {
+public class temp {
 
     public void printNames() {
         FileResource fr = new FileResource();
@@ -23,12 +23,12 @@ public class BabyBirths {
     }
 
     public void totalBirths(FileResource fr ){
-        //float totalBirths = 0;
+        float totalBirths = 0;
         float totalGirls = 0;
         float totalBoys = 0;
         for (CSVRecord rec : fr.getCSVParser(false)){
             int numBorn = Integer.parseInt(rec.get(2));
-            if (rec.get(1).matches("[f|F]")){ //[fF]
+            if (rec.get(1).intern() == "f|F"){ //[fF]
                 totalGirls +=numBorn;
             }else{
                 totalBoys += numBorn;
@@ -42,19 +42,16 @@ public class BabyBirths {
         FileResource fr = new FileResource();
         totalBirths(fr);
     }
-    
-    public int getRank(int year, String name, String gender){
-        int rank = -1;
-        FileResource fr = new FileResource("H:\\github\\Data_week4\\us_babynames_test\\");
-        for (CSVRecord currRow : fr.getCSVParser(false)){
-            int numBorn = Integer.parseInt(currRow.get(2));
-            if (numBorn > rank){
-                
-            }
-            
+
+    public void testcompare(){
+        float totalBirths = 0;
+        float totalGirls = 0;
+        float totalBoys = 0;
+        String abc = "f";
+        if (abc.matches("[f|F]")){ //[fF]
+            totalGirls =3;
+        }else{
+            totalBoys =2;
         }
-        
-        
-        return rank;
     }
 }
