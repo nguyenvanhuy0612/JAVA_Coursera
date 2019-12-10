@@ -42,19 +42,50 @@ public class BabyBirths {
         FileResource fr = new FileResource();
         totalBirths(fr);
     }
-    
+
     public int getRank(int year, String name, String gender){
-        int rank = -1;
-        FileResource fr = new FileResource("H:\\github\\Data_week4\\us_babynames_test\\");
+        int rank = 0;
+        FileResource fr = new FileResource("H:\\github\\Data_week4\\us_babynames_test\\yob"+year+"short.csv");
         for (CSVRecord currRow : fr.getCSVParser(false)){
-            int numBorn = Integer.parseInt(currRow.get(2));
-            if (numBorn > rank){
-                
+            String currGender = currRow.get(1);
+            if (currGender.matches(gender)){
+                rank++;
+                String currName = currRow.get(0);
+                if (currName.matches(name)){
+                    return rank;
+                }
             }
-            
         }
-        
-        
-        return rank;
+        return -1;
     }
+
+    public String getName(int year, int rank, String gender){
+        int place = 0;
+        FileResource fr = new FileResource("H:\\github\\Data_week4\\us_babynames_test\\yob"+year+"short.csv");
+        for (CSVRecord currRow : fr.getCSVParser(false)){
+            String currGender = currRow.get(1);
+            if (currGender.matches(gender)){
+                place++;
+                if (place == rank){
+                    return currRow.get(0);
+                }
+            }
+        }
+        return "NO NAME";
+    }
+
+    public void whatIsNameInYear(String name, int year, int newYear, String gender){
+        String gen = "he";
+        if (gender.matches("F")){
+            gen = "she";
+        }
+        int rank = getRank(year, name, gender);
+        if (rank != -1){
+            String newName =  getName(newYear, rank, gender);
+            System.out.println(name + " born in "+year+" would be "+newName+" if "+gen+" was born in "+newYear+".");
+        }
+    }
+    
+    public void yearOfHighestRank(String name, String gender){
+        
 }
