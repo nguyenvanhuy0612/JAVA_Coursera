@@ -86,6 +86,15 @@ public class BabyBirths {
         }
     }
     
-    public void yearOfHighestRank(String name, String gender){
+    public int yearOfHighestRank(String name, String gender){
+        DirectoryResource dr = new DirectoryResource();
+        for (File f : dr.selectedFiles()){
+            String fileName = f.getName().replaceAll("\\D", "");
+            int year = Integer.parseInt(fileName);
+            
+            System.out.println(year);
+        }
+        
+        return 1;
     }
 }
