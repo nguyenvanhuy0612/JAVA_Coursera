@@ -8,7 +8,7 @@
 import java.io.*;
 import org.apache.commons.csv.*;
 import edu.duke.*;
-public class BabyBirths {
+public class temp1 {
 
     public void printNames() {
         FileResource fr = new FileResource();
@@ -85,25 +85,16 @@ public class BabyBirths {
             System.out.println(name + " born in "+year+" would be "+newName+" if "+gen+" was born in "+newYear+".");
         }
     }
-
+    
     public int yearOfHighestRank(String name, String gender){
         DirectoryResource dr = new DirectoryResource();
-        int yearNameHighRank = -1;
-        int rankInYear = -1;
         for (File f : dr.selectedFiles()){
             String fileName = f.getName().replaceAll("\\D", "");
             int year = Integer.parseInt(fileName);
-            int currRankInYear = getRank(year, name, gender);
-            if (rankInYear == -1 && currRankInYear != -1){
-                rankInYear = currRankInYear;
-                yearNameHighRank = year;
-            }else{
-                if (currRankInYear < rankInYear && currRankInYear != -1){
-                    rankInYear = currRankInYear;
-                    yearNameHighRank = year;
-                }
-            }
+            
+            System.out.println(year);
         }
-        return yearNameHighRank;
+        
+        return 1;
     }
 }

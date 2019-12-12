@@ -85,15 +85,25 @@ public class BabyBirths {
             System.out.println(name + " born in "+year+" would be "+newName+" if "+gen+" was born in "+newYear+".");
         }
     }
-    
+
     public int yearOfHighestRank(String name, String gender){
         DirectoryResource dr = new DirectoryResource();
+        int yearNameHighRank = -1;
+        int rankInYear = -1;
         for (File f : dr.selectedFiles()){
             String fileName = f.getName().replaceAll("\\D", "");
             int year = Integer.parseInt(fileName);
-            System.out.println(year);
+            int currRankInYear = getRank(year, name, gender);
+            if (rankInYear == -1){
+                rankInYear = currRankInYear;
+                yearNameHighRank = year;
+            }else{
+                if (currRankInYear < rankInYear && currRankInYear != -1){
+                    rankInYear = currRankInYear;
+                    yearNameHighRank = year;
+                }
+            }
         }
-        
-        return 1;
+        return yearNameHighRank;
     }
 }
