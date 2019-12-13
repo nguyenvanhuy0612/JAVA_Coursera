@@ -8,7 +8,7 @@
 import java.io.*;
 import org.apache.commons.csv.*;
 import edu.duke.*;
-public class MiniProjectExercise {
+public class Extend {
 
     public void printNames() {
         FileResource fr = new FileResource();
@@ -44,8 +44,18 @@ public class MiniProjectExercise {
     }
 
     public int getRank(int year, String name, String gender){
-        int rank = 0;
+        //Input
         FileResource fr = new FileResource("us_babynames_test\\yob"+year+"short.csv");
+        //File name and rank
+        int birthOfName = 0;
+        for (CSVRecord currRow : fr.getCSVParser(false)){
+            String currName = currRow.get(0);
+            if (currRow.get(0).equals(name) && currRow.get(1).equals("F")){
+                birthOfName = Integer.parseInt(currRow.get(2));
+            }
+        }
+        
+        int rank = 0;
         for (CSVRecord currRow : fr.getCSVParser(false)){
             String currGender = currRow.get(1);
             if (currGender.matches(gender)){
