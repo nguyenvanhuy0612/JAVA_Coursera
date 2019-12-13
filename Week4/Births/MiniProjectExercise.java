@@ -8,7 +8,7 @@
 import java.io.*;
 import org.apache.commons.csv.*;
 import edu.duke.*;
-public class BabyBirths {
+public class MiniProjectExercise {
 
     public void printNames() {
         FileResource fr = new FileResource();
@@ -45,7 +45,7 @@ public class BabyBirths {
 
     public int getRank(int year, String name, String gender){
         int rank = 0;
-        FileResource fr = new FileResource("H:\\github\\Data_week4\\us_babynames_test\\yob"+year+"short.csv");
+        FileResource fr = new FileResource("us_babynames_test\\yob"+year+"short.csv");
         for (CSVRecord currRow : fr.getCSVParser(false)){
             String currGender = currRow.get(1);
             if (currGender.matches(gender)){
@@ -61,7 +61,7 @@ public class BabyBirths {
 
     public String getName(int year, int rank, String gender){
         int place = 0;
-        FileResource fr = new FileResource("H:\\github\\Data_week4\\us_babynames_test\\yob"+year+"short.csv");
+        FileResource fr = new FileResource("us_babynames_test\\yob"+year+"short.csv");
         for (CSVRecord currRow : fr.getCSVParser(false)){
             String currGender = currRow.get(1);
             if (currGender.matches(gender)){
@@ -105,5 +105,43 @@ public class BabyBirths {
             }
         }
         return yearNameHighRank;
+    }
+
+    public double getAverageRank(String name, String gender){
+        int numOfFile = 0;
+        int totalRank = 0;
+        DirectoryResource dr = new DirectoryResource();
+        for (File f : dr.selectedFiles()){
+            String fileName = f.getName().replaceAll("\\D", "");
+            int year = Integer.parseInt(fileName);
+            int currRankInYear = getRank(year, name, gender);
+            if (currRankInYear != -1){
+                totalRank += currRankInYear;
+                numOfFile++;
+            }
+        }
+        if (numOfFile == 0){
+            return -1.0;
+        }else{
+            return (double) totalRank/numOfFile;
+        }
+    }
+
+    public int getTotalBirthsRankedHigher(int year, String name, String gender){
+        int totalBirths = 0;
+        FileResource fr = new FileResource("us_babynames_test\\yob"+year+"short.csv");
+        for (CSVRecord currRow : fr.getCSVParser(false)){
+            String currGender = currRow.get(1);
+            if (currGender.matches(gender)){
+                int currBirth = Integer.parseInt(currRow.get(2));
+                String currName = currRow.get(0);
+                if (currName.matches(name)){
+                    return totalBirths;
+                }else{
+                    totalBirths += currBirth;
+                }
+            }
+        }
+        return -1;
     }
 }
