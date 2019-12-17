@@ -48,25 +48,30 @@ public class Extend {
         FileResource fr = new FileResource("us_babynames_test\\yob"+year+"short.csv");
         //File name and rank
         int birthOfName = 0;
+        int posOfName = 0;
         for (CSVRecord currRow : fr.getCSVParser(false)){
-            String currName = currRow.get(0);
-            if (currRow.get(0).equals(name) && currRow.get(1).equals("F")){
+            posOfName++;
+            if (currRow.get(0).equals(name) && currRow.get(1).equals(gender)){
                 birthOfName = Integer.parseInt(currRow.get(2));
+                break;
             }
         }
-        
+        if (birthOfName == 0){ 
+            return -1;
+        }
         int rank = 0;
+        int i = 0;
         for (CSVRecord currRow : fr.getCSVParser(false)){
+            i++;
             String currGender = currRow.get(1);
             if (currGender.matches(gender)){
-                rank++;
-                String currName = currRow.get(0);
-                if (currName.matches(name)){
-                    return rank;
+                int currBirth = Integer.parseInt(currRow.get(2));
+                if (currBirth > birthOfName || (currBirth == birthOfName && i <= posOfName)){
+                    rank++;
                 }
             }
         }
-        return -1;
+        return rank;
     }
 
     public String getName(int year, int rank, String gender){
