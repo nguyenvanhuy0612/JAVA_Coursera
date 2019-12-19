@@ -59,7 +59,7 @@ public class Extend {
         if (birthOfName == 0){ 
             return -1;
         }
-        int rank = 0;
+        int rankOfName = 0;
         int i = 0;
         for (CSVRecord currRow : fr.getCSVParser(false)){
             i++;
@@ -67,11 +67,11 @@ public class Extend {
             if (currGender.matches(gender)){
                 int currBirth = Integer.parseInt(currRow.get(2));
                 if (currBirth > birthOfName || (currBirth == birthOfName && i <= posOfName)){
-                    rank++;
+                    rankOfName++;
                 }
             }
         }
-        return rank;
+        return rankOfName;
     }
 
     public String getName(int year, int rank, String gender){

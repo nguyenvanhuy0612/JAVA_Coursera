@@ -84,7 +84,7 @@ public class MiniProjectExercise {
         if (rank != -1 && !newName.equals("NO NAME")){
             System.out.println(name + " born in "+year+" would be "+newName+" if "+gen+" was born in "+newYear+".");
         }else{
-            
+            System.out.println("NOT FOUND");
         }
     }
 
@@ -138,6 +138,7 @@ public class MiniProjectExercise {
                 int currBirth = Integer.parseInt(currRow.get(2));
                 String currName = currRow.get(0);
                 if (currName.matches(name)){
+                    total -= currB;
                     return totalBirths;
                 }else{
                     totalBirths += currBirth;
