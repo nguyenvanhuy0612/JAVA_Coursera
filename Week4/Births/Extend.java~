@@ -43,6 +43,8 @@ public class Extend {
         totalBirths(fr);
     }
 
+
+    
     public int getRank(int year, String name, String gender){
         //Input
         FileResource fr = new FileResource("us_babynames_test\\yob"+year+"short.csv");
@@ -73,7 +75,6 @@ public class Extend {
         }
         return rankOfName;
     }
-    
 
     public String getName(int year, int rank, String gender){
         int place = 0;

@@ -42,7 +42,7 @@ public class Extend {
         FileResource fr = new FileResource();
         totalBirths(fr);
     }
-
+    
     public int getRank(int year, String name, String gender){
         //Input
         FileResource fr = new FileResource("us_babynames_test\\yob"+year+"short.csv");
